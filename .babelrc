@@ -1,0 +1,30 @@
+{
+  "presets": [
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [
+          "."
+        ],
+        "alias": {
+					"@atoms": "./src/components/atoms",
+          "@molecules": "./src/components/molecules",
+          "@organisms": "./src/components/organisms",
+          "@pages": "./src/components/pages",
+          "@components": "./src/components",
+          "@assets": "./src/assets",
+          "@api": "./src/api",
+          "@utils": "./src/utils",
+          "@constants": "./src/constants",
+          "@services": "./src/api/services",
+          "@context": "./src/context",
+          "@src": "./src",
+          "@~": "."
+        }
+      }
+    ]
+  ]
+}

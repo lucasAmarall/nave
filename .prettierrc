@@ -1,0 +1,9 @@
+// {
+// 	"parser": "babel",
+//   "useTabs": true,
+//   "tabWidth": 2,
+//   "printWidth": 100,
+//   "trailingComma": "all",
+//   "semi": true,
+//   "dobleQuote": true
+// }

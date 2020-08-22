@@ -1,6 +1,6 @@
 {
   "presets": [
-    "@babel/preset-react"
+    "babel-preset-typescript", "@babel/preset-react"
   ],
   "plugins": [
     [
@@ -20,6 +20,7 @@
           "@utils": "./src/utils",
           "@constants": "./src/constants",
           "@services": "./src/api/services",
+          "@interfaces": "./src/interfaces",
           "@context": "./src/context",
           "@src": "./src",
           "@~": "."

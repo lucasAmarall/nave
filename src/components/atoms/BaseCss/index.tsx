@@ -1,6 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
-const resetCss = createGlobalStyle`
+import montaSerratRegular from "@assets/fonts/Montserrat-Regular.ttf";
+import montaSerratSemiBold from "@assets/fonts/Montserrat-SemiBold.ttf";
+
+const BaseCss = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -47,6 +50,24 @@ const resetCss = createGlobalStyle`
   a {
     text-decoration: none
   }
+  #root {
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src:  url('${montaSerratRegular}');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src:  url('${montaSerratSemiBold}');
+    font-weight: 600;
+    font-style: normal;
+    font-display: block;
+  }
 `;
 
-export default resetCss;
+export default BaseCss;

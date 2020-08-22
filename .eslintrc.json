@@ -6,13 +6,13 @@
 	"extends": [
 		"eslint:recommended",
 		"plugin:react/recommended",
-		"airbnb",
-		"prettier"
+		"plugin:@typescript-eslint/eslint-recommended"
 	],
 	"globals": {
 		"Atomics": "readonly",
 		"SharedArrayBuffer": "readonly"
 	},
+	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true
@@ -20,40 +20,25 @@
 		"ecmaVersion": 2018,
 		"sourceType": "module"
 	},
-	"plugins": [
-		"react",
-		"react-hooks",
-		"jsx-a11y",
-  	    "import"
-    ],
-    
+	"plugins": ["react", "react-hooks", "@typescript-eslint"],
 	"rules": {
 		"max-len": [
-      "error",
-      {
-        "code": 100
-      }
-    ],
-    "prefer-promise-reject-errors": ["off"],
-    "no-return-assign": ["off"],
-    "react/jsx-props-no-spreading": ["off"],
-    "no-console": 2 ,
-		"indent": ["error", 2, {"ignoredNodes": ["JSXElement"]}],
-    "react/jsx-indent": ["error", 2],
-		"linebreak-style": [
 			"error",
-			"unix"
+			{
+				"code": 100
+			}
 		],
-		"quotes": [
-			"error",
-			"double"
-		],
-		"semi": [
-			"error",
-			"always"
-		],
+		"prefer-promise-reject-errors": ["off"],
+		"no-return-assign": ["off"],
+		"react/jsx-props-no-spreading": ["off"],
+		"no-console": 2,
+		"indent": ["error", 2, { "ignoredNodes": ["JSXElement"] }],
+		"react/jsx-indent": ["error", 2],
+		"linebreak-style": ["error", "unix"],
+		"quotes": ["error", "double"],
+		"semi": ["error", "always"],
 		"react/jsx-uses-react": "error",
-        "react/jsx-uses-vars": "error",
+		"react/jsx-uses-vars": "error",
 		"react/jsx-no-duplicate-props": "error",
 		"react/no-access-state-in-setstate": "warn", // Reports when this.state is accessed within setState
 		"react/display-name": "error", // Prevent missing displayName in a React component definition
@@ -68,13 +53,21 @@
 		"react/prefer-stateless-function": "error", //Enforce stateless components to be written as a pure function
 		"react/require-default-props": "error", //Enforce a defaultProps definition for every prop that is not a required prop.
 		"react/self-closing-comp": "error", //Prevent extra closing tags for components without children (fixable)
-		"react/jsx-filename-extension": [1, { "extensions": [".ts",".tsx"] }], // Restrict file extensions that may contain JSX (react/jsx-filename-extension)
+		"react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }], // Restrict file extensions that may contain JSX (react/jsx-filename-extension)
 		"react/jsx-key": "error", // Detect missing key prop (react/jsx-key)
-		"import/no-unresolved": "off" // TODO temporary solution
+		"import/no-unresolved": "off"
 	},
-	"settings": {
-		"react": {
-			"pragma": "React",  // Pragma to use, default to "React"
-            "version": "detect" // React version. "detect" automatically picks the version you have installed.
+	"overrides": [
+		{
+			"files": ["*.ts", "*.tsx"],
+			"rules": {
+				"@typescript-eslint/no-unused-vars": [2, { "args": "none"}]
+			}
 		}
-  }}
+	],
+	"settings": {
+    "react": {
+      "version": "latest"
+    }
+  }
+}

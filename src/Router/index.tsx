@@ -7,7 +7,6 @@ import {
 
 import Dashboard from "@pages/Dashboard";
 import Login from "@pages/Login";
-
 const Router = () => (
   <BrowserRouter>
     <Switch>

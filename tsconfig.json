@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -15,17 +15,27 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": true,
     "jsx": "react",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+			"@atoms/*": ["./src/components/atoms/*"],
+			"@molecules/*": ["./src/components/molecules/*"],
+			"@organisms/*": ["./src/components/organisms/*"],
+			"@pages/*": ["./src/components/pages/*"],
+			"@components/*": ["./src/components/*"],
+			"@assets/*": ["./src/assets/*"],
+			"@api/*": ["./src/api/*"],
+			"@utils/*": ["./src/utils/*"],
+			"@constants/*": ["./src/constants/*"],
+			"@services/*": ["./src/api/services/*"],
+			"@interfaces/*": ["./src/interfaces/*"],
+			"@context/*": ["./src/context/*"],
+			"@src/*": ["./src/*"],
+			"@~/*": ["./*"]
+    }
   },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
-  "include": [
-    "src",
-    "public"
-  ]
+  "exclude": ["node_modules", "dist"],
+  "include": ["src", "public"]
 }

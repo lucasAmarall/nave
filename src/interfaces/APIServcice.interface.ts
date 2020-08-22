@@ -3,6 +3,7 @@ import { AxiosResponse, AxiosInstance } from "axios";
 export interface IAPIService {
   service: AxiosInstance;
   
+  addHeaderToken(token: string) : void;
   get(resource: string, params: object): Promise<AxiosResponse>;
   post(resource: string, params: object): Promise<AxiosResponse>;
   put(resource: string, params: object): Promise<AxiosResponse>;

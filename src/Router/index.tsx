@@ -7,15 +7,19 @@ import RouteControl from "@src/Router/midleware/routeControl";
 import TokenUtils from "@utils/TokenUtils";
 import { pathEnum } from "@constants/path";
 
+import APIService from "@api/index";
 
 const Router = () => {
+  const token = TokenUtils.getToken();
   const [auth, setAuth] = useState(false);
+
   useEffect(() => {
-    setAuth(TokenUtils.hasToken());
-    TokenUtils.onTokenChange((hasToken: boolean) => {
-      setAuth(hasToken);
-    });
-  }, []);
+    TokenUtils.onTokenChange(setAuth);
+    if(!token) return;
+    const service = new APIService();
+    TokenUtils.setToken(token);
+    service.addHeaderToken(token);
+  }, [token]);
 
   return(
     <BrowserRouter>

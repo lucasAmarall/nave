@@ -4,6 +4,7 @@ export const light = {
   texts: {
     primary: "#000000",
     secondary: "#ffff",
+    error: "red"
   },
   backgrounds: {
     primary: "#ffffff",

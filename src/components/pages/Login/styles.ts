@@ -5,6 +5,7 @@ export const Container = styled(_Container)`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `;
 
 export const Form = styled.form`
@@ -27,4 +28,8 @@ export const LogoContainer = styled.div`
 
 export const InputContainer = styled.div`
   margin-bottom: ${({theme}) => theme.margin(7)};
+`;
+
+export const ErrorMessageContainer = styled.div`
+  margin-top: ${({theme}) => theme.margin(2)}
 `;

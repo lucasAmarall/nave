@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Router from "@src/Router";
+import BaseCss from "@atoms/BaseCss";
+import Icons from "@atoms/Icons";
+import { ThemeProvider } from "styled-components";
+import { themes } from "@constants/theme";
 
-function App() {
+const App = () => {
+  const theme = themes.light;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BaseCss />
+      <Icons />
+      <ThemeProvider theme={theme}>
+        <Router />
+      </ThemeProvider>
+    </>
   );
-}
+};
 
 export default App;

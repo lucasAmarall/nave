@@ -150,7 +150,9 @@
       "jest-watch-typeahead/testname"
     ]
   },
-  "hooks": {
-    "pre-commit": "npm run lint"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }

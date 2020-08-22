@@ -7,6 +7,6 @@ export interface ITokenUtils {
   getToken(): string | null;
   removeToken(): void;
   hasToken(): boolean;
-  onTokenChange(): void;
+  emitEvent(): void;
   onTokenChange( call : func): void;
 }

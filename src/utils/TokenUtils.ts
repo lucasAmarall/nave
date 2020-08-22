@@ -6,7 +6,7 @@ class TokenUtils implements ITokenUtils {
 
   setToken(token: string){
     localStorage.setItem(this.tokenKey, token);
-    this.onTokenChange();
+    this.emitEvent();
   }
 
   getToken(): string | null {
@@ -15,18 +15,18 @@ class TokenUtils implements ITokenUtils {
 
   removeToken(){
     localStorage.removeItem(this.tokenKey);
-    this.onTokenChange();
+    this.emitEvent();
   }
 
   hasToken(): boolean{
     return !!localStorage.getItem(this.tokenKey);
   }
 
-  onTokenChange(){
+  emitEvent(){
     this.listeners.map( func => func(this.hasToken()));
   }
 
-  onTokenChanged( call : func){
+  onTokenChange( call : func){
     this.listeners.push(call);
   }
 }

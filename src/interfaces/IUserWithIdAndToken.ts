@@ -1,6 +1,5 @@
-import { IUser } from "@interfaces/User.interface";
 
-export interface IUserWithIdAndToken extends IUser {
+export interface IUserWithIdAndToken {
   email: string;
   id: string;
   token: string;

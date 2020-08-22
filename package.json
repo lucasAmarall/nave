@@ -148,9 +148,9 @@
     "watchPlugins": [
       "jest-watch-typeahead/filename",
       "jest-watch-typeahead/testname"
-    ],
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
+    ]
+  },
+  "hooks": {
+    "pre-commit": "npm run lint"
   }
 }

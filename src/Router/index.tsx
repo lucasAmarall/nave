@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 
-import Dashboard from "@pages/Dashboard";
+import Dashboard from "@pages/Home";
 import Login from "@pages/Login";
 import RouteControl from "@src/Router/midleware/routeControl";
 import TokenUtils from "@utils/TokenUtils";
@@ -16,9 +16,8 @@ const Router = () => {
   useEffect(() => {
     TokenUtils.onTokenChange(setAuth);
     if(!token) return;
-    const service = new APIService();
     TokenUtils.setToken(token);
-    service.addHeaderToken(token);
+    APIService.setHeaderToken(token);
   }, [token]);
 
   return(

@@ -6,12 +6,12 @@ class APIService implements IAPIService{
     timeout: 3000
   });
 
-  addHeaderToken(token: string){
+  setHeaderToken(token: string){
     this.service.defaults.headers.authorization = `Bearer ${token}`;
   }
 
-  async get(resource: string, params?: object){
-    return this.service.get(resource, params);
+  async get<T>(resource: string, params?: object){
+    return this.service.get<T>(resource, params);
   }
 
   async post<T>(resource: string, params: object){
@@ -30,4 +30,4 @@ class APIService implements IAPIService{
     return this.service.patch(resource, params);
   }
 }
-export default APIService;
+export default new APIService();

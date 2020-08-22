@@ -2,7 +2,8 @@
 import React from "react";
 
 import { Container } from "./styles";
-import LoginForm from "@components/templates/LoginForm";
+import LoginForm from "@templates/LoginForm";
+
 const Login = () => {
   return ( 
     <Container>

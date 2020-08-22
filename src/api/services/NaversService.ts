@@ -1,10 +1,10 @@
 import APIService from "..";
-import { ILoginService } from "@interfaces/LoginService.interface";
-import { IUser } from "@interfaces/User.interface";
-import { IUserWithIdAndToken } from "@interfaces/IUserWithIdAndToken";
+import { INavaerService } from "@interfaces/NaverService.interface";
+import { INaver } from "@interfaces/KKINaver.interface";
 
-export default class LoginService extends APIService implements ILoginService{
-  async login(user: IUser): Promise<IUserWithIdAndToken> {
-    return (await this.post<IUserWithIdAndToken>("/users/login", user)).data;
+export default class NaversService implements INavaerService{
+
+  async list(): Promise<INaver[]> {
+    return (await APIService.get<INaver[]>("/navers")).data;
   }
 }

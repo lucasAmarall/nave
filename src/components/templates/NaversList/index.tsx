@@ -4,13 +4,10 @@ import NaversService from "@services/NaversService";
 import { INaver } from "@interfaces/INaver.interface";
 import NaverItem from "@molecules/NaverItem";
 import { Container, ItemContainer } from "./style";
+import { INaversListProps } from "@interfaces/NaversListProps.interface";
 
-interface k {
-  onEdit: (naver: INaver) => void;
-  onDelete: (naver: INaver) => void;
-}
 
-const NaversList = ({onEdit, onDelete}: k) => {
+const NaversList = ({onEdit, onDelete}: INaversListProps) => {
   const [navers, setNavers] = useState<INaver[]>([]);
 
   const fetchList = useCallback(async () => {

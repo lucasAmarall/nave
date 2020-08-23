@@ -1,6 +1,6 @@
 import APIService from "..";
 import { INavaerService } from "@interfaces/NaverService.interface";
-import { INaver } from "@interfaces/KKINaver.interface";
+import { INaver } from "@interfaces/INaver.interface";
 
 export default class NaversService implements INavaerService{
 

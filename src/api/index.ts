@@ -3,7 +3,7 @@ import { IAPIService } from "@interfaces/APIServcice.interface";
 class APIService implements IAPIService{
   service: AxiosInstance = axios.create({
     baseURL: "https://navedex-api.herokuapp.com/v1",
-    timeout: 3000
+    timeout: 30000
   });
 
   setHeaderToken(token: string){

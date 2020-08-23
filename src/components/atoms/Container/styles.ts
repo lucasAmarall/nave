@@ -5,6 +5,5 @@ export const ContentContainer = styled.section`
   margin: 0 auto;
   box-sizing: border-box;
   width: 100vw;
-  max-width: 1280px;
   min-height: 100vh;
 `;

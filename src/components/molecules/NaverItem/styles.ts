@@ -25,6 +25,7 @@ export const Role = styled(TextLevel2)`
 export const IconsContainer = styled.div`
 	font-size: 24px;
 	margin-top: ${({ theme }) => theme.margin(2)};
+	color: ${({ theme }) => theme.icons.primary};
 	span {
 		cursor: pointer;
 		margin-right: ${({ theme }) => theme.margin(2)}

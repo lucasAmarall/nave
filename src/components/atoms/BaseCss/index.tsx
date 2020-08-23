@@ -31,6 +31,7 @@ const BaseCss = createGlobalStyle`
   }
   body {
     line-height: 1;
+    background: ${({theme}) => theme.backgrounds.primary}
   }
   ol, ul {
     list-style: none;

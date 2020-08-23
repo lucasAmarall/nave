@@ -33,6 +33,12 @@ const resetCss = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .icon-left-arrow:before {
+    content: "\\e903";
+  }
+  .icon-close:before {
+    content: "\\e904";
+  }
   .icon-delete:before {
     content: "\\e900";
   }

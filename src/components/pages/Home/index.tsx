@@ -5,7 +5,6 @@ import { Container, HeaderContainer, Content, Title,ListHeader } from "./styles"
 import { HeadingLevel1 } from "@atoms/Typograph";
 
 const Dashboard = () => {
-
   return (
     <Container>
       <HeaderContainer>

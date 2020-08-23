@@ -1,4 +1,4 @@
-import { INaver } from "@interfaces/KKINaver.interface";
+import { INaver } from "@interfaces/INaver.interface";
 
 export interface INaverItemProp extends INaver{
   onEdit: (data: INaver) => void;

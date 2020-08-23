@@ -1,10 +1,11 @@
-/* eslint-disable no-console */
 import React, { useEffect, useState } from "react";
 
 import NaversService from "@services/NaversService";
-import { INaver } from "@interfaces/KKINaver.interface";
+import { INaver } from "@interfaces/INaver.interface";
 import NaverItem from "@molecules/NaverItem";
 import { Container, ItemContainer } from "./style";
+import Eventbus from "@utils/Eventbus";
+import DialogModal from "@molecules/DialogModal";
 
 const NaversList = () => {
   const [navers, setNavers] = useState<INaver[]>([]);
@@ -12,14 +13,13 @@ const NaversList = () => {
     const service = new NaversService();
     setNavers(await service.list());
   };
-  const edit = (value: any) => {
-    alert("edit");
-    console.log(value);
+  const edit = () => {
+    Eventbus.$emit("openModal", () => <DialogModal />);
   };
-  const del = (value: any) => {
-    alert("del");
-    console.log(value);
+  const del = () => {
+    Eventbus.$emit("openModal", () => <DialogModal />);
   };
+
   useEffect( () => {
     fetchList();
   }, []);

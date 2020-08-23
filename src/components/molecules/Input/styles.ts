@@ -20,6 +20,7 @@ export const TextInput = styled.input`
   letter-spacing: inherit;
   border: none;
   outline: none;
+  background: none;
   width: calc(100% - ${({theme}) => theme.padding(2)});
 `;
 

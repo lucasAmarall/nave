@@ -9,4 +9,5 @@ export const Container = styled.h1`
 
 export const GhostText = styled.span`
   font-size: 1px;
+  opacity: 0;
 `;

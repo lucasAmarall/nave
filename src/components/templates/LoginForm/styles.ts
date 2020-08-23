@@ -7,7 +7,7 @@ export const Container = styled.form`
   max-width: 450px;
   height: 90vh;
   max-height: 410px;
-  border: 1px solid black;
+  border: 1px solid ${({theme}) => theme.borders.primary};
   padding: 0 ${({theme}) => theme.padding(8)};
   box-sizing: border-box;
   text-align: center;

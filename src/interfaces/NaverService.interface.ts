@@ -1,4 +1,4 @@
-import { INaver } from "@interfaces/KKINaver.interface";
+import { INaver } from "@interfaces/INaver.interface";
 export interface INavaerService {
   list(): Promise<INaver[]>
 }

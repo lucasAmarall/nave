@@ -1,5 +1,6 @@
 export enum pathEnum {
 	login = "/login",
 	home = "/",
-	default = "/",
+	naver_creation = "/create",
+	default = "*",
 }

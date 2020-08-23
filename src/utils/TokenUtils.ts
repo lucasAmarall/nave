@@ -9,8 +9,8 @@ class TokenUtils implements ITokenUtils {
     this.emitEvent();
   }
 
-  getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+  getToken(): string  {
+    return localStorage.getItem(this.tokenKey) || "";
   }
 
   removeToken(){

@@ -1,11 +1,13 @@
 import styled from "styled-components";
+import { IThemeLogoProps } from "@interfaces/ThemedLogoProps.interfce";
 
 export const Container = styled.h1`
-  font-size: 60px;
+  font-size: ${({small }: IThemeLogoProps) => small ? 36 : 60}px;
   overflow: hidden;
-  color: ${({theme}) => theme.texts.primary}
+  color: ${({theme}: IThemeLogoProps) => theme.texts.primary}
 `;
 
 export const GhostText = styled.span`
   font-size: 1px;
+  opacity: 0;
 `;

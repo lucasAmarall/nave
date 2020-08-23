@@ -1,4 +1,3 @@
-
 export interface IUserWithIdAndToken {
   email: string;
   id: string;

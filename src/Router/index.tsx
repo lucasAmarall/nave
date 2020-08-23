@@ -1,25 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 
-import Dashboard from "@pages/Dashboard";
+import Dashboard from "@pages/Home";
 import Login from "@pages/Login";
+import NaverCreation from "@pages/NaverCreation";
 import RouteControl from "@src/Router/midleware/routeControl";
 import TokenUtils from "@utils/TokenUtils";
 import { pathEnum } from "@constants/path";
 
+import APIService from "@api/index";
 
 const Router = () => {
+  const token = TokenUtils.getToken();
   const [auth, setAuth] = useState(false);
+
   useEffect(() => {
-    setAuth(TokenUtils.hasToken());
-    TokenUtils.onTokenChange((hasToken: boolean) => {
-      setAuth(hasToken);
-    });
-  }, []);
+    TokenUtils.onTokenChange(setAuth);
+    if(!token) return;
+    TokenUtils.setToken(token);
+    APIService.setHeaderToken(token);
+  }, [token]);
 
   return(
     <BrowserRouter>
       <Switch>
+        <RouteControl 
+          path={pathEnum.naver_creation} 
+          hasAccess={auth} 
+          redirectTo={pathEnum.login}
+          component={NaverCreation} 
+        /> 
         <RouteControl 
           path={pathEnum.login} 
           hasAccess={!auth} 

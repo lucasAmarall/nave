@@ -1,10 +1,16 @@
 import styled from "styled-components";
+import { IThemedButtonProps } from "@interfaces/ThemedButtonProps.interface";
 
 export const Container = styled.button`
   display: block;
-  background: ${({theme}) => theme.backgrounds.secondary};
   cursor: pointer;
   padding: ${({theme}) => theme.padding(2)} 0;
   border: none;
   appearance: none;
+  width: 100%;
+  border: 1px solid ${({theme}) => theme.black};
+  background: ${({theme, secondary}: IThemedButtonProps) => 
+    theme.backgrounds[secondary ? "primary" : "secondary"]};
+  color: ${({theme, secondary}: IThemedButtonProps) => 
+    theme.texts[secondary ? "primary" : "secondary"]};
 `;

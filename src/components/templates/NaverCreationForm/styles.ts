@@ -6,7 +6,7 @@ export const Container = styled.form`
   display: grid;
   grid-template-rows: repeat(4, auto);
   grid-template-columns: 280px 280px;
-  grid-gap: 32px;
+  grid-gap: 30px 32px;
 `;
 
 

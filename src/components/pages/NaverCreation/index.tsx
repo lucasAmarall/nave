@@ -1,15 +1,29 @@
-import React from  "react";
+import React from "react";
 import Header from "@molecules/Header";
-import { Container, HeaderContainer } from "./styles";
+import { Container, HeaderContainer, ContentContainer, FormContainer } from "./styles";
+import { HeadingLevel2 } from "@atoms/Typograph";
+import NaverCreationForm from "@templates/NaverCreationForm";
 
 const Dashboard = () => {
-
+  const goBack = () => {
+    window.history.back();
+  };
   return (
     <Container>
       <HeaderContainer>
         <Header />
       </HeaderContainer>
-      <h1>alsjdlkajsdklasjdlkal</h1>
+      <ContentContainer>
+        <div onClick={goBack}>
+          <HeadingLevel2>
+            <span className="icon-left-arrow" />
+            Adicionar naver
+          </HeadingLevel2>
+        </div>
+        <FormContainer>
+          <NaverCreationForm />
+        </FormContainer>
+      </ContentContainer>
     </Container>
   );
 };

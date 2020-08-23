@@ -4,9 +4,9 @@ import { Container } from "./styles";
 import { TextLevel4 } from "@atoms/Typograph";
 import { IButtonProps } from "@interfaces/ButtonProps.interface";
 
-const Button = ({ children, onClick }: IButtonProps) => (
-  <Container onClick={onClick}>
-    <TextLevel4 color="secondary">
+const Button = ({ children, onClick, secondary }: IButtonProps) => (
+  <Container onClick={onClick} secondary={secondary}>
+    <TextLevel4 color={secondary ? "primary" : "secondary"}>
       {children}
     </TextLevel4>
   </Container>

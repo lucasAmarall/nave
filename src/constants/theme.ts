@@ -1,6 +1,8 @@
 import { Theme } from "@src/interfaces/Theme.interface";
 
 export const light = {
+  black: "#000000",
+  white: "#ffff",
   texts: {
     primary: "#000000",
     secondary: "#ffff",

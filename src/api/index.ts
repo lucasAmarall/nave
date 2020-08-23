@@ -22,8 +22,8 @@ class APIService implements IAPIService{
     return this.service.put(resource, params);
   }
 
-  async delete(resource: string){
-    return this.service.delete(resource);
+  async delete<T>(resource: string){
+    return this.service.delete<T>(resource);
   }
 
   async patch(resource: string, params?: object){

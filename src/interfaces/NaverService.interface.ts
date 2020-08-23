@@ -1,4 +1,6 @@
 import { INaver } from "@interfaces/INaver.interface";
+import { IDeleteNaverResponse } from "./IDeleteNaverResponse.interface";
 export interface INavaerService {
-  list(): Promise<INaver[]>
+  get(): Promise<INaver[]>;
+  delete( id: string): Promise<IDeleteNaverResponse>;
 }

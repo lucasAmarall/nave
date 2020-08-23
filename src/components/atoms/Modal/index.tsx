@@ -8,6 +8,7 @@ const ScreenLocker = () => {
 
   useEffect(() => {
     Eventbus.$on("openModal", open);
+    Eventbus.$on("closeModal", () => close(true));
     Eventbus.$on("closingScreenLocker", close);
   }, []);
 
@@ -17,13 +18,16 @@ const ScreenLocker = () => {
     setComponent(componentToOpen);
   };
   
-  const close = () => {
-    Eventbus.$emit("closeScreenLocker");
+  const close = (trusted: boolean) => {
+    if(trusted){
+      Eventbus.$emit("closeScreenLocker");
+    }
+    Eventbus.$emit("closingModal");
     setIsOpen(false);
     setTimeout(() => {
       setComponent(() => null);
       // animation time
-    }, 400);
+    }, 300);
   };
 
   const ComponentToShow = () => component;

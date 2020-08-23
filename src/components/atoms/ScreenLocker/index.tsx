@@ -12,7 +12,7 @@ const ScreenLocker = () => {
 
   useEffect(() => {
     Eventbus.$on("openScreenLocker", () => setScreenLockerOpen(true));
-    Eventbus.$on("closeScreenLocker", () => close);
+    Eventbus.$on("closeScreenLocker", () => close());
   }, []);
 
   const close = () => {

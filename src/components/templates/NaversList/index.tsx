@@ -1,35 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 import NaversService from "@services/NaversService";
 import { INaver } from "@interfaces/INaver.interface";
 import NaverItem from "@molecules/NaverItem";
 import { Container, ItemContainer } from "./style";
-import Eventbus from "@utils/Eventbus";
-import DialogModal from "@molecules/DialogModal";
 
-const NaversList = () => {
+interface k {
+  onEdit: (naver: INaver) => void;
+  onDelete: (naver: INaver) => void;
+}
+
+const NaversList = ({onEdit, onDelete}: k) => {
   const [navers, setNavers] = useState<INaver[]>([]);
-  const fetchList = async () => {
+
+  const fetchList = useCallback(async () => {
     const service = new NaversService();
-    setNavers(await service.list());
-  };
-  const edit = () => {
-    Eventbus.$emit("openModal", () => <DialogModal />);
-  };
-  const del = () => {
-    Eventbus.$emit("openModal", () => <DialogModal />);
-  };
+    setNavers(await service.get());
+  }, []);
 
   useEffect( () => {
     fetchList();
-  }, []);
-
+  }, [fetchList]);
+  
   return(
     <Container>
       {
         navers.map(naver => (
           <ItemContainer key={naver.id}>
-            <NaverItem {...naver} onEdit={edit} onDelete={del} />
+            <NaverItem {...naver} onEdit={onEdit} onDelete={onDelete} />
           </ItemContainer>
         ))
       }

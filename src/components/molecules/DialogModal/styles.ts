@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background: white;
+  background: ${({theme}) => theme.backgrounds.primary};
   padding: ${({theme}) => theme.padding(8)};
   width: 90vw;
   max-width: 592px;

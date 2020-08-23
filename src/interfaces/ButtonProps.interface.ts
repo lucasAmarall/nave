@@ -1,4 +1,7 @@
+import { ReactNode } from "react";
+
 export interface IButtonProps {
-  children: string;
+  children: ReactNode;
   onClick?: () => void;
+  secondary?: boolean;
 }

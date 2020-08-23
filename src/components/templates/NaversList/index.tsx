@@ -12,7 +12,7 @@ const NaversList = ({onEdit, onDelete}: INaversListProps) => {
 
   const fetchList = useCallback(async () => {
     const service = new NaversService();
-    setNavers(await service.get());
+    setNavers(await (await service.get()).reverse());
   }, []);
 
   useEffect( () => {

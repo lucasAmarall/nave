@@ -8,7 +8,7 @@ export const Container = styled.button`
   border: none;
   appearance: none;
   width: 100%;
-  border: 1px solid ${({theme}) => theme.black};
+  border: 1px solid ${({theme}) => theme.borders.primary};
   background: ${({theme, secondary}: IThemedButtonProps) => 
     theme.backgrounds[secondary ? "primary" : "secondary"]};
   color: ${({theme, secondary}: IThemedButtonProps) => 

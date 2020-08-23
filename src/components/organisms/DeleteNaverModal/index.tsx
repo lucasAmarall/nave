@@ -8,6 +8,10 @@ import { ConfirmButtonsContainer, ButtonContainer } from "./styles";
 import { IDeleteNaverModalProps } from "@interfaces/DeleteNaverModalProps.interface";
 
 const DeleteNaverModal = ({isOpen, onClose, naver}: IDeleteNaverModalProps) => {
+  const closeModal = () => {
+    Eventbus.$emit("closeModal");
+  };
+
   const _deleteNaver = async ({ id, name }: INaver) => {
     try {
       const service = new NaversService();
@@ -38,7 +42,7 @@ const DeleteNaverModal = ({isOpen, onClose, naver}: IDeleteNaverModalProps) => {
       >
         <ConfirmButtonsContainer>
           <ButtonContainer>
-            <Button secondary >Cancelar</Button>
+            <Button secondary onClick={closeModal}>Cancelar</Button>
           </ButtonContainer>
           <ButtonContainer>
             <Button onClick={() => _deleteNaver(naver)}>Excluir</Button>

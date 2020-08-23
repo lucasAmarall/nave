@@ -33,7 +33,7 @@ const NaverCreationForm = () => {
       Eventbus.$emit("openModal", () => (
         <DialogModal
           title="Houve algum erro..."
-          description={`Não foi possível criar ${name}. Por favor tente novamente.`}
+          description={`Não foi possível criar ${name || "este naver"}. Por favor tente novamente.`}
         />));
     }
   };

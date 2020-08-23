@@ -14,5 +14,9 @@ export const ContentContainer = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  margin-top: ${({theme}) => theme.margin(10)};
+  margin-top: ${({theme}) => theme.margin(8)};
+`;
+
+export const Title = styled.span`
+  margin-left: ${({theme}) => theme.margin(4)}
 `;

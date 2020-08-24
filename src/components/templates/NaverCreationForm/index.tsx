@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useState } from  "react";
 import NaversService from "@api/services/NaversService";
 import Eventbus from "@utils/Eventbus";

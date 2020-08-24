@@ -22,6 +22,7 @@ const LoginForm = () => {
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if(loading) return;
     setLoading(true);
     try {
       const { token } = await service.login({email, password});

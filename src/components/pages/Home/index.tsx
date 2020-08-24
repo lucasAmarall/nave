@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
 import React, { useState } from  "react";
 import Header from "@molecules/Header";
 import NaversList from "@templates/NaversList";

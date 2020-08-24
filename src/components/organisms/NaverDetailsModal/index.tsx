@@ -1,12 +1,5 @@
 import React, { useEffect, useCallback } from "react";
 import Eventbus from "@utils/Eventbus";
-
-interface K {
-  naver?: INaver;
-  isOpen: boolean;
-  onClose: () => void;
-}
-
 import {
   Container,
   Picture,
@@ -16,9 +9,9 @@ import {
   CloseIcon
 } from "./styles";
 import { TextLevel2 } from "@atoms/Typograph";
-import { INaver } from "@interfaces/INaver.interface";
+import { INaverDetailsModalProps } from "@interfaces/INaverDetailsModalProps.interface";
 
-const NaverDetailsModal = ({naver, isOpen, onClose}: K) => {
+const NaverDetailsModal = ({naver, isOpen, onClose}: INaverDetailsModalProps) => {
   const closeModal = () => {
     Eventbus.$emit("closeModal");
   };

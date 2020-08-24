@@ -14,8 +14,8 @@ const DeleteNaverModal = ({isOpen, onClose, naver}: IDeleteNaverModalProps) => {
   };
 
   const _deleteNaver = async ({ id, name }: INaver) => {
-    setLoading(true);
     try {
+      setLoading(true);
       const service = new NaversService();
       await service.delete(id);
       Eventbus.$emit("openModal", () => (
@@ -24,15 +24,16 @@ const DeleteNaverModal = ({isOpen, onClose, naver}: IDeleteNaverModalProps) => {
           description="Naver excluído com sucesso!"
         />
       ));
-      setLoading(false);
+      Eventbus.$emit("closeModal");
     } catch (e) {
-      setLoading(false);
       Eventbus.$emit("openModal", () => (
         <DialogModal
           title="Houve algum erro..."
           description={`Não foi possível excluir ${name}. Por favor tente novamente.`}
         />
       ));
+    } finally {
+      setLoading(false);
     }
   };
 

@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { IBaseFontStyle } from "@interfaces/IBaseFontStyle.interface";
 
 const BaseFontStyle = styled.span`
-	font-family: Montserrat;
 	font-style: normal;
 	color: ${({ theme, color }: IBaseFontStyle) => (
     color ? theme.texts[color] : theme.texts.primary

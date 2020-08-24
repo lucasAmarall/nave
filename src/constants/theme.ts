@@ -19,7 +19,7 @@ export const light = {
     primary: "#000000",
   },
   icons: {
-    primary: "#00000"
+    primary: "#000000"
   },
   margin: (level: number = 1) => `${4 * level}px`,
   padding: (level: number = 1) => `${4 * level}px`,

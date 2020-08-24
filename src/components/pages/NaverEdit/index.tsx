@@ -9,9 +9,14 @@ import {
   TitleContainer
 } from "./styles";
 import { HeadingLevel2 } from "@atoms/Typograph";
-import NaverCreationForm from "@templates/NaverCreationForm";
+import NaverEditFrom from "@templates/NaverEditForm";
+import { useParams, useLocation } from "react-router-dom";
+import { INaver } from "@interfaces/INaver.interface";
 
-const NaverCreation = () => {
+const NaverEdit = () => {
+  const params = useParams<{id: string}>();
+  const { state } = useLocation<INaver>();
+  const id = params.id;
   
   const goBack = () => {
     window.history.back();
@@ -27,16 +32,16 @@ const NaverCreation = () => {
             <HeadingLevel2>
               <span className="icon-left-arrow" />
               <Title>
-                Adicionar Naver
+                Editar Naver
               </Title>
             </HeadingLevel2>
           </TitleContainer>
         </div>
         <FormContainer>
-          <NaverCreationForm />
+          <NaverEditFrom naver={state} id={id} />
         </FormContainer>
       </ContentContainer>
     </Container>
   );
 };
-export default NaverCreation;
+export default NaverEdit;

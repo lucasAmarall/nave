@@ -18,16 +18,16 @@ class APIService implements IAPIService{
     return this.service.post<T>(resource, params);
   }
 
-  async put(resource: string, params?: object){
-    return this.service.put(resource, params);
+  async put<T>(resource: string, params: object){
+    return this.service.put<T>(resource, params);
   }
 
   async delete<T>(resource: string){
     return this.service.delete<T>(resource);
   }
 
-  async patch(resource: string, params?: object){
-    return this.service.patch(resource, params);
+  async patch<T>(resource: string, params?: object){
+    return this.service.patch<T>(resource, params);
   }
 }
 export default new APIService();

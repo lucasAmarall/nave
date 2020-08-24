@@ -16,9 +16,10 @@ const Dashboard = () => {
   const [openDeleteNaver, setDeleteNaverModalStatus] = useState<boolean>(false);
   const [openNaverDetails, setNaverDetailsStatus] = useState<boolean>(false);
 
-  const editNaver = () => {
-    alert("editNaver");
+  const editNaver = (naver: INaver) => {
+    history.push(`${pathEnum.naver_edit}${naver.id}`, naver);
   };
+
   const deleteNaver = (naver: INaver) => {
     setNaverSelected(naver);
     setDeleteNaverModalStatus(true);
@@ -56,6 +57,8 @@ const Dashboard = () => {
           onClose={() => setDeleteNaverModalStatus(false)}
         />
         <NaverDetailsModal 
+          onDelete={deleteNaver}
+          onEdit={(editNaver)}
           naver={naverSelected} 
           isOpen={openNaverDetails} 
           onClose={() => setNaverDetailsStatus(false)}

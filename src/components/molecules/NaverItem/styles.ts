@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TextLevel3, TextLevel2 } from "@atoms/Typograph";
+import { TextLevel2 } from "@atoms/Typograph";
 
 export const Container = styled.article`
 	display: inline-block;
@@ -21,7 +21,7 @@ export const Avatar = styled.img`
 	}
 `;
 
-export const Name = styled(TextLevel3)`
+export const Name = styled.h2`
 	display: block;
 	margin-bottom: ${({ theme }) => theme.margin(2)};
 `;

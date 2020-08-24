@@ -38,8 +38,8 @@ const NaverDetailsModal = ({naver, isOpen, onClose, onEdit, onDelete}: INaverDet
           <FieldTitle>Projetos que participou</FieldTitle>
           <TextLevel2>{naver.project}</TextLevel2>
           <IconsContainer>
-            <span className="icon-delete" onClick={() => onDelete(naver)} />
-            <span className="icon-edit" onClick={() => onEdit(naver)} />
+            <span className="icon-delete" onClick={() => (onDelete(naver))} />
+            <span className="icon-edit" onClick={() => (closeModal(), onEdit(naver))} />
           </IconsContainer>
         </InfoContainer>
       </Container>

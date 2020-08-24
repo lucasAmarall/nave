@@ -27,13 +27,13 @@ const LoginForm = () => {
     try {
       const { token } = await service.login({email, password});
       TokenUtils.setToken(token);
-      setLoading(false);
     } catch {
       setError(true);
-      setLoading(false);
       setTimeout(() => {
         setError(false);
       }, 5000);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -44,10 +44,22 @@ const LoginForm = () => {
           <Logo />
         </LogoContainer>
         <InputContainer>
-          <Input placeholder="E-mail" value={email} onChange={setEmail} />
+          <Input 
+            placeholder="E-mail" 
+            value={email} 
+            onUpdate={setEmail} 
+            type="email"
+            required
+          />
         </InputContainer>
         <InputContainer>
-          <Input placeholder="Senha" value={password} onChange={setPassword} />
+          <Input 
+            placeholder="Senha" 
+            value={password} 
+            onUpdate={setPassword} 
+            type="password"
+            required
+          />
         </InputContainer>
         <Button loading={loading}>Entrar</Button>
       </Container>

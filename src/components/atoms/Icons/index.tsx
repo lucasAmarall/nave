@@ -1,9 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
-import fontEot from "@assets/fonts/icomoon.eot";
-import fontSvg from "@assets/fonts/icomoon.svg";
-import fontTtf from "@assets/fonts/icomoon.ttf";
-import fontWoff from "@assets/fonts/icomoon.woff";
+const fontEot = require("@assets/fonts/icomoon.eot");
+const fontSvg = require("@assets/fonts/icomoon.svg");
+const fontTtf = require("@assets/fonts/icomoon.ttf");
+const fontWoff= require( "@assets/fonts/icomoon.woff");
 
 const resetCss = createGlobalStyle`
   @font-face {

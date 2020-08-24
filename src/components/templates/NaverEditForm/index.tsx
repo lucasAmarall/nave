@@ -24,12 +24,11 @@ const NaverCreationForm = ({naver: _naver, id: _id}: {naver: INaver | undefined,
   const loadById = useCallback(async (id: string) => {
     try{
       const naverById = await service.getById(id);
-      fillState(naverById);
+      if(naverById) fillState(naverById);
     } catch(e){
-      // eslint-disable-next-line no-console
-      console.log(e);
+      history.push(pathEnum.home);
     }
-  }, [fillState, service]);
+  }, [fillState, history, service]);
 
 
   const firtsVerificatoin = useCallback(async () =>{

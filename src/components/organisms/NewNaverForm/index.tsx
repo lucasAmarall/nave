@@ -14,32 +14,38 @@ const NaverCreationForm = ({naver, onSubmit, onUpdate, loading}: INaverCreationF
       <Input 
         placeholder="Nome" 
         value={naver.name} 
-        onChange={value => onUpdate({...naver, name: value})}
+        onUpdate={value => onUpdate({...naver, name: value})}
+        required
       />
       <Input 
         placeholder="Cargo" 
         value={naver.job_role} 
-        onChange={value => onUpdate({...naver, job_role: value})}
+        onUpdate={value => onUpdate({...naver, job_role: value})}
+        required
       />
       <Input 
         placeholder="Idade" 
         value={naver.birthdate} 
-        onChange={value => onUpdate({...naver, birthdate: value})}
+        onUpdate={value => onUpdate({...naver, birthdate: value})}
+        required
       />
       <Input 
         placeholder="Tempo de empresa" 
         value={naver.admission_date} 
-        onChange={value => onUpdate({...naver, admission_date: value})}
+        onUpdate={value => onUpdate({...naver, admission_date: value})}
+        required
       />
       <Input 
         placeholder="Projetos que participou" 
         value={naver.project} 
-        onChange={value => onUpdate({...naver, project: value})}
+        onUpdate={value => onUpdate({...naver, project: value})}
+        required
       />
       <Input 
         placeholder="URL da foto do Naver" 
         value={naver.url} 
-        onChange={value => onUpdate({...naver, url: value})}
+        onUpdate={value => onUpdate({...naver, url: value})}
+        required
       />
       <span/>
       <SaveButton>

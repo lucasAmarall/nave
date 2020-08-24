@@ -3,9 +3,9 @@ import { Container, TextInput, Title } from "./styles";
 import { TextLevel2, TextLevel5 } from "@atoms/Typograph";
 import { IInputProps } from "@interfaces/InputProps.interface";
 
-const Input = ({ title, placeholder, onChange, value, ...props }: IInputProps) => {
+const Input = ({ title, placeholder, onUpdate, value, ...props }: IInputProps) => {
   const _onChange = (event: Event & ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.value);
+    onUpdate(event.target.value);
   };
   return (
     <Container>

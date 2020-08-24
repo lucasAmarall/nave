@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "@molecules/Header";
 import { 
   Container,
@@ -17,10 +17,6 @@ const NaverEdit = () => {
   const params = useParams<{id: string}>();
   const { state } = useLocation<INaver>();
   const id = params.id;
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(state);
-  },[params, state]);
   
   const goBack = () => {
     window.history.back();

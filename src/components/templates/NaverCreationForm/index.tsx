@@ -9,6 +9,7 @@ import { Container, SaveButton } from "./styles";
 import { INewNaver } from "@interfaces/INewNaver.interface";
 
 const NaverCreationForm = () => {
+  const [loading, setLoading] = useState(false);
   const service = new NaversService();
   const [naver, setNaver] = useState<INewNaver>({
     "job_role": "Desenvolvedor",
@@ -21,9 +22,11 @@ const NaverCreationForm = () => {
 
   const submit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
     try {
       await service.post(naver);
       resetForm();
+      setLoading(false);
       Eventbus.$emit("openModal", () => (
         <DialogModal
           title="Naver criado"
@@ -31,6 +34,7 @@ const NaverCreationForm = () => {
         />
       ));
     } catch {
+      setLoading(false);
       Eventbus.$emit("openModal", () => (
         <DialogModal
           title="Houve algum erro..."
@@ -83,7 +87,7 @@ const NaverCreationForm = () => {
       />
       <span/>
       <SaveButton>
-        <Button>
+        <Button loading={loading}>
           Salvar
         </Button>
       </SaveButton>

@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import Eventbus from "@utils/Eventbus";
 import DialogModal from "@molecules/DialogModal";
 import Button from "@molecules/Button";
@@ -8,11 +8,13 @@ import { ConfirmButtonsContainer, ButtonContainer } from "./styles";
 import { IDeleteNaverModalProps } from "@interfaces/IDeleteNaverModalProps.interface";
 
 const DeleteNaverModal = ({isOpen, onClose, naver}: IDeleteNaverModalProps) => {
+  const [loading, setLoading] = useState(false);
   const closeModal = () => {
     Eventbus.$emit("closeModal");
   };
 
   const _deleteNaver = async ({ id, name }: INaver) => {
+    setLoading(true);
     try {
       const service = new NaversService();
       await service.delete(id);
@@ -22,7 +24,9 @@ const DeleteNaverModal = ({isOpen, onClose, naver}: IDeleteNaverModalProps) => {
           description="Naver excluído com sucesso!"
         />
       ));
+      setLoading(false);
     } catch (e) {
+      setLoading(false);
       Eventbus.$emit("openModal", () => (
         <DialogModal
           title="Houve algum erro..."
@@ -45,12 +49,12 @@ const DeleteNaverModal = ({isOpen, onClose, naver}: IDeleteNaverModalProps) => {
             <Button secondary onClick={closeModal}>Cancelar</Button>
           </ButtonContainer>
           <ButtonContainer>
-            <Button onClick={() => _deleteNaver(naver)}>Excluir</Button>
+            <Button loading={loading} onClick={() => _deleteNaver(naver)}>Excluir</Button>
           </ButtonContainer>
         </ConfirmButtonsContainer>
       </DialogModal>
     ));
-  }, []);
+  }, [loading]);
 
   useEffect(() => {
     if(isOpen){

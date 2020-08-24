@@ -11,7 +11,8 @@ import {
 import { HeadingLevel2 } from "@atoms/Typograph";
 import NaverCreationForm from "@templates/NaverCreationForm";
 
-const Dashboard = () => {
+const NaverCreation = () => {
+  
   const goBack = () => {
     window.history.back();
   };
@@ -38,4 +39,4 @@ const Dashboard = () => {
     </Container>
   );
 };
-export default Dashboard;
+export default NaverCreation;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo} from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 
 import Dashboard from "@pages/Home";
@@ -12,13 +12,11 @@ import APIService from "@api/index";
 
 const Router = () => {
   const token = TokenUtils.getToken();
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(!!token);
+  APIService.setHeaderToken(token);
 
   useEffect(() => {
     TokenUtils.onTokenChange(setAuth);
-    if(!token) return;
-    TokenUtils.setToken(token);
-    APIService.setHeaderToken(token);
   }, [token]);
 
   return(
@@ -52,4 +50,4 @@ const Router = () => {
     </BrowserRouter>
   );
 };
-export default memo(Router);
+export default Router;

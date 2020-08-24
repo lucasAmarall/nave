@@ -7,18 +7,30 @@ import NewNaverForm from "@organisms/NewNaverForm";
 import { INaver } from "@interfaces/INaver.interface";
 import { useHistory } from "react-router-dom";
 import { pathEnum } from "@constants/path";
+import DateUtil from "@utils/DateUtils";
 
 const NaverCreationForm = ({naver: _naver, id: _id}: {naver: INaver | undefined, id:string }) => {
   const history = useHistory();
   const service = new NaversService();
   const [id, setId] = useState("");
-  const [naver, setNaver] = useState<INewNaver>();
+  const [naver, setNaver] = useState<INewNaver>({
+    "job_role": "Loading...",
+    "admission_date": "Loading...",
+    "birthdate": "Loading...",
+    "project": "Loading...",
+    "name": "Loading...",
+    "url": "Loading..."
+  });
 
   const fillState = useCallback((naver: INaver) => {
     delete naver.user_id;
     const { id = _id, ...rest} = naver;
     setId(id);
-    setNaver(rest);
+    setNaver({
+      ...rest,
+      birthdate: DateUtil.getFormatedDate(rest.birthdate),
+      admission_date: DateUtil.getFormatedDate(rest.admission_date)
+    });
   }, [_id]);
 
   const loadById = useCallback(async (id: string) => {
@@ -72,10 +84,6 @@ const NaverCreationForm = ({naver: _naver, id: _id}: {naver: INaver | undefined,
       "url": ""
     });
   };
-
-  if(!naver){
-    return null;
-  }
   
   return <NewNaverForm naver={naver} onSubmit={submit} onUpdate={setNaver} />;
 };

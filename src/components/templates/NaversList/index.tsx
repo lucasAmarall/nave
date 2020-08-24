@@ -5,7 +5,7 @@ import { INaver } from "@interfaces/INaver.interface";
 import NaverItem from "@molecules/NaverItem";
 import { Container, ItemContainer } from "./style";
 import { INaversListProps } from "@interfaces/INaversListProps.interface";
-
+import Eventbus from "@utils/Eventbus";
 
 const NaversList = ({onEdit, onDelete, onDetail}: INaversListProps) => {
   const [navers, setNavers] = useState<INaver[]>([]);
@@ -17,6 +17,10 @@ const NaversList = ({onEdit, onDelete, onDetail}: INaversListProps) => {
 
   useEffect( () => {
     fetchList();
+  }, [fetchList]);
+
+  useEffect(() => {
+    Eventbus.$on("reloadList", fetchList);
   }, [fetchList]);
   
   return(

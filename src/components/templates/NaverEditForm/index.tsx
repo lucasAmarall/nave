@@ -31,15 +31,15 @@ const NaverCreationForm = ({naver: _naver, id: _id}: {naver: INaver | undefined,
   }, [fillState, history, service]);
 
 
-  const firtsVerificatoin = useCallback(async () =>{
+  const firtsVerification = useCallback(async () =>{
     if(_naver && !naver) return fillState(_naver);
     if(_id) return loadById(id);
     history.push(pathEnum.home);
   }, [_id, _naver, fillState, history, id, loadById, naver]);
   
   useEffect( () => {
-    firtsVerificatoin();
-  }, [firtsVerificatoin]);
+    firtsVerification();
+  }, [firtsVerification]);
 
   const submit = async () => {
     if(!naver) return;

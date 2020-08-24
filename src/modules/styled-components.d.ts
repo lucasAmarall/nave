@@ -1,4 +1,4 @@
-import { Theme } from "@interfaces/Theme.interface";
+import { Theme } from "@interfaces/ITheme.interface";
 
 type ThemeInterface = Theme;
 

@@ -1,5 +1,5 @@
 import APIService from "..";
-import { INavaerService } from "@interfaces/NaverService.interface";
+import { INavaerService } from "@interfaces/INaverService.interface";
 import { INaver } from "@interfaces/INaver.interface";
 import { IDeleteNaverResponse } from "@interfaces/IDeleteNaverResponse.interface";
 import { INewNaver } from "@interfaces/INewNaver.interface";

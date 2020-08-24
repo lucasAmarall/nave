@@ -9,7 +9,9 @@ class Eventbus {
       return;
     }
     this.listeners[event] = [];
-    this.listeners[event].push(func);
+    if(!this.listeners[event].includes(func)){
+      this.listeners[event].push(func);
+    }
   }
 
   $emit(event: string, param?: unknown){

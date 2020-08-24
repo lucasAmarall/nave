@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { IRouteControlProps } from "@interfaces/RouteControlProps.interface";
+import { IRouteControlProps } from "@interfaces/IRouteControlProps.interface";
 
 const RouteControl = ({component: Component, redirectTo, path, hasAccess}: IRouteControlProps) => (
   <Route

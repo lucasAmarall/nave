@@ -2,7 +2,7 @@ import React from "react";
 
 import { Container } from "./styles";
 import { TextLevel4 } from "@atoms/Typograph";
-import { IButtonProps } from "@interfaces/ButtonProps.interface";
+import { IButtonProps } from "@interfaces/IButtonProps.interface";
 
 const Button = ({ children, onClick, secondary }: IButtonProps) => (
   <Container onClick={onClick} secondary={secondary}>

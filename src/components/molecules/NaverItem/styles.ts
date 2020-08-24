@@ -3,6 +3,8 @@ import { TextLevel3, TextLevel2 } from "@atoms/Typograph";
 
 export const Container = styled.article`
 	display: inline-block;
+	width: 280px;
+	overflow: hidden;
 `;
 
 export const Avatar = styled.img`
@@ -11,6 +13,12 @@ export const Avatar = styled.img`
 	object-fit: cover;
 	object-position: center;
 	margin-bottom: ${({ theme }) => theme.margin(3)};
+	cursor: pointer;
+	transition: 0.3s ease-in-out all;
+
+	&:hover {
+		transform: scale(1.05)
+	}
 `;
 
 export const Name = styled(TextLevel3)`

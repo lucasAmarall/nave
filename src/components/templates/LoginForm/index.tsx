@@ -19,7 +19,8 @@ const LoginForm = () => {
   const [email, setEmail] = useState<string>("009@nave.rs");
   const [password, setPassword] = useState<string>("nave1234");
 
-  const onSubmit = async () => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     try {
       const { token } = await service.login({email, password});
       TokenUtils.setToken(token);
@@ -33,7 +34,7 @@ const LoginForm = () => {
 
   return(
     <>
-      <Container onSubmit={onSubmit} action="javascript:;">
+      <Container onSubmit={onSubmit}>
         <LogoContainer>
           <Logo />
         </LogoContainer>

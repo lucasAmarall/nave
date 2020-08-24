@@ -1,4 +1,4 @@
-import { ITokenUtils, func } from "@interfaces/TokenUtils.interface";
+import { ITokenUtils, func } from "@interfaces/ITokenUtils.interface";
 
 class TokenUtils implements ITokenUtils {
   tokenKey = `${window.location.host}-TOKEN`;

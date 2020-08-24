@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import React, { useState } from  "react";
 import Header from "@molecules/Header";
 import NaversList from "@templates/NaversList";
@@ -8,18 +10,25 @@ import { HeadingLevel1 } from "@atoms/Typograph";
 import { INaver } from "@interfaces/INaver.interface";
 import { useHistory } from "react-router-dom";
 import { pathEnum } from "@constants/path";
+import NaverDetailsModal from "@organisms/NaverDetailsModal";
 
 const Dashboard = () => {
   const history = useHistory();
   const [naverSelected, setNaverSelected] = useState<INaver | undefined>(undefined);
-  const [openDeleteNaver, setOpenDeleteNaver] = useState<boolean>(false);
+  const [openDeleteNaver, setDeleteNaverModalStatus] = useState<boolean>(false);
+  const [openNaverDetails, setNaverDetailsStatus] = useState<boolean>(false);
 
   const editNaver = () => {
     alert("editNaver");
   };
   const deleteNaver = (naver: INaver) => {
     setNaverSelected(naver);
-    setOpenDeleteNaver(true);
+    setDeleteNaverModalStatus(true);
+  };
+
+  const naverDetails = (naver: INaver) => {
+    setNaverSelected(naver);
+    setNaverDetailsStatus(true);
   };
 
   const goToCreation = () => {
@@ -42,11 +51,16 @@ const Dashboard = () => {
             </Button>
           </NewNaverButton>
         </ListHeader>
-        <NaversList onDelete={deleteNaver} onEdit={(editNaver)} />
+        <NaversList onDelete={deleteNaver} onEdit={(editNaver)} onDetail={naverDetails}/>
         <DeleteNaverModal 
           naver={naverSelected} 
           isOpen={openDeleteNaver} 
-          onClose={() => setOpenDeleteNaver(false)}
+          onClose={() => setDeleteNaverModalStatus(false)}
+        />
+        <NaverDetailsModal 
+          naver={naverSelected} 
+          isOpen={openNaverDetails} 
+          onClose={() => setNaverDetailsStatus(false)}
         />
       </Content>
     </Container>

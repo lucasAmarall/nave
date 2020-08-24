@@ -1,8 +1,10 @@
-import { Theme } from "@src/interfaces/Theme.interface";
+import { Theme } from "@interfaces/ITheme.interface";
 
 export const light = {
   black: "#000000",
   white: "#ffff",
+  light: true,
+  dark: false,
   texts: {
     primary: "#000000",
     secondary: "#ffff",
@@ -25,6 +27,8 @@ export const light = {
 
 export const dark: Theme = {
   ...light,
+  light: false,
+  dark: true,
   texts: {
     primary: "#ffffff",
     secondary: "#131313",

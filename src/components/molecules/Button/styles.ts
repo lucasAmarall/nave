@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IThemedButtonProps } from "@interfaces/ThemedButtonProps.interface";
+import { IThemedButtonProps } from "@interfaces/IThemedButtonProps.interface";
 
 export const Container = styled.button`
   display: block;

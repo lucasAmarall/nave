@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-import { IAPIService } from "@interfaces/APIServcice.interface";
+import { IAPIService } from "@interfaces/IAPIServcice.interface";
 class APIService implements IAPIService{
   service: AxiosInstance = axios.create({
     baseURL: "https://navedex-api.herokuapp.com/v1",

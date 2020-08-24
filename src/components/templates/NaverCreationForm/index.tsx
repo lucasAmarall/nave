@@ -19,7 +19,8 @@ const NaverCreationForm = () => {
     "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-YF8M8YsAYndh2rWX3w8u1Lh4kJHgL86g6w&usqp=CAU"
   });
 
-  const submit = async () => {
+  const submit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     try {
       await service.post(naver);
       resetForm();
@@ -49,7 +50,7 @@ const NaverCreationForm = () => {
     });
   };
   return(
-    <Container onSubmit={submit} action="javascript:;" >
+    <Container onSubmit={submit}>
       <Input 
         placeholder="Nome" 
         value={naver.name} 

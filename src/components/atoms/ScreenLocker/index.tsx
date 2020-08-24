@@ -6,8 +6,8 @@ const ScreenLocker = () => {
   const [screenLockerOpen, setScreenLockerOpen] = useState(false);
 
   useEffect(() => {
-    const body = document.querySelector("body");
-    if(body) body.style.overflow = screenLockerOpen ? "hidden" : "auto";
+    // const body = document.querySelector("body");
+    // if(body) body.style.overflow = screenLockerOpen ? "hidden" : "auto";
   }, [screenLockerOpen]);
 
   useEffect(() => {

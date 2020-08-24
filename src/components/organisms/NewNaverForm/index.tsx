@@ -4,7 +4,7 @@ import Button from "@molecules/Button";
 import { Container, SaveButton } from "./styles";
 import { INaverCreationForm } from "@interfaces/INaverCreationForm.interface";
 
-const NaverCreationForm = ({naver, onSubmit, onUpdate}: INaverCreationForm) => {
+const NaverCreationForm = ({naver, onSubmit, onUpdate, loading}: INaverCreationForm) => {
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onSubmit(naver);
@@ -43,7 +43,7 @@ const NaverCreationForm = ({naver, onSubmit, onUpdate}: INaverCreationForm) => {
       />
       <span/>
       <SaveButton>
-        <Button>
+        <Button loading={loading}>
           Salvar
         </Button>
       </SaveButton>

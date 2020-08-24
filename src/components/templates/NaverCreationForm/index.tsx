@@ -6,6 +6,7 @@ import DialogModal from "@molecules/DialogModal";
 import { INewNaver } from "@interfaces/INewNaver.interface";
 import NewNaverForm from "@organisms/NewNaverForm";
 const NaverCreationForm = () => {
+  const [loading, setLoading] = useState(false);
   const service = new NaversService();
   const [naver, setNaver] = useState<INewNaver>({
     "job_role": "Desenvolvedor",
@@ -17,9 +18,11 @@ const NaverCreationForm = () => {
   });
 
   const submit = async () => {
+    setLoading(true);
     try {
       await service.post(naver);
       resetForm();
+      setLoading(false);
       Eventbus.$emit("openModal", () => (
         <DialogModal
           title="Naver criado"
@@ -27,6 +30,7 @@ const NaverCreationForm = () => {
         />
       ));
     } catch {
+      setLoading(false);
       Eventbus.$emit("openModal", () => (
         <DialogModal
           title="Houve algum erro..."
@@ -46,7 +50,7 @@ const NaverCreationForm = () => {
     });
   };
   
-  return <NewNaverForm naver={naver} onSubmit={submit} onUpdate={setNaver} />;
+  return <NewNaverForm naver={naver} onSubmit={submit} onUpdate={setNaver} loading={loading}/>;
 };
 
 

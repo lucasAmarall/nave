@@ -15,17 +15,21 @@ import {
 import TokenUtils from "@utils/TokenUtils";
 const LoginForm = () => {
   const service = new LoginService();
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("123@nave.rs");
   const [password, setPassword] = useState<string>("nave1234");
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
     try {
       const { token } = await service.login({email, password});
       TokenUtils.setToken(token);
+      setLoading(false);
     } catch {
       setError(true);
+      setLoading(false);
       setTimeout(() => {
         setError(false);
       }, 5000);
@@ -44,7 +48,7 @@ const LoginForm = () => {
         <InputContainer>
           <Input placeholder="Senha" value={password} onChange={setPassword} />
         </InputContainer>
-        <Button>Entrar</Button>
+        <Button loading={loading}>Entrar</Button>
       </Container>
 
       <ErrorMessageContainer>

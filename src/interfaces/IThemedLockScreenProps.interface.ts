@@ -1,4 +1,4 @@
-import { Theme } from "@interfaces/Theme.interface";
+import { Theme } from "@interfaces/ITheme.interface";
 import { ILockScreenProps } from "@interfaces/ILockscreen.interface";
 
 export interface IThemedLockScreenProps extends ILockScreenProps {

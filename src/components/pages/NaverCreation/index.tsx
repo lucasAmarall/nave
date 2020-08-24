@@ -1,6 +1,13 @@
 import React from "react";
 import Header from "@molecules/Header";
-import { Container, HeaderContainer, ContentContainer, FormContainer, Title } from "./styles";
+import { 
+  Container,
+  HeaderContainer,
+  ContentContainer,
+  FormContainer,
+  Title,
+  TitleContainer
+} from "./styles";
 import { HeadingLevel2 } from "@atoms/Typograph";
 import NaverCreationForm from "@templates/NaverCreationForm";
 
@@ -15,10 +22,14 @@ const Dashboard = () => {
       </HeaderContainer>
       <ContentContainer>
         <div onClick={goBack}>
-          <HeadingLevel2>
-            <span className="icon-left-arrow" />
-            <Title>Adicionar Naver</Title>
-          </HeadingLevel2>
+          <TitleContainer>
+            <HeadingLevel2>
+              <span className="icon-left-arrow" />
+              <Title>
+                Adicionar Naver
+              </Title>
+            </HeadingLevel2>
+          </TitleContainer>
         </div>
         <FormContainer>
           <NaverCreationForm />

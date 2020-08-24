@@ -1,5 +1,5 @@
 import { light } from "@constants/theme";
-import { Theme } from "./Theme.interface";
+import { Theme } from "./ITheme.interface";
 
 export interface IBaseFontStyle {
   color?: keyof typeof light.texts;

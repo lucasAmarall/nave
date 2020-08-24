@@ -9,7 +9,9 @@ export const Container = styled.div`
   box-sizing: border-box;
   min-height: 160px;
   margin-top: -30px;
-  border: 1px solid ${({theme}) => theme.borders.primary};
+  ${({theme}) => (
+    theme.dark && `border: 1px solid ${theme.borders.primary};`
+  )}
   >span {
     display: block;
   }
@@ -24,4 +26,5 @@ export const CloseIcon = styled.div`
   top: 24px;
   right: 24px;
   font-size: 23px;
+  cursor: pointer;
 `;

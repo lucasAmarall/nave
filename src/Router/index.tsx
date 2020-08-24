@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo} from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 
 import Dashboard from "@pages/Home";
@@ -52,4 +52,4 @@ const Router = () => {
     </BrowserRouter>
   );
 };
-export default Router;
+export default memo(Router);

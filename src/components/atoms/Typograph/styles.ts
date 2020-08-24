@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IBaseFontStyle } from "@interfaces/BaseFontStyle.interface";
+import { IBaseFontStyle } from "@interfaces/IBaseFontStyle.interface";
 
 const BaseFontStyle = styled.span`
 	font-family: Montserrat;

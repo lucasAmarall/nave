@@ -8,8 +8,8 @@ import ScreenLocker from "@atoms/ScreenLocker";
 import Modal from "@atoms/Modal";
 
 const App = () => {
-  // const theme = themes.light;
-  const theme = themes.dark;
+  const theme = themes.light;
+  // const theme = themes.dark;
   
   return (
     <>

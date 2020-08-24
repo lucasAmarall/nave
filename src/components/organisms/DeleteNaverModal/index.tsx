@@ -5,7 +5,7 @@ import Button from "@molecules/Button";
 import NaversService from "@services/NaversService";
 import { INaver } from "@interfaces/INaver.interface";
 import { ConfirmButtonsContainer, ButtonContainer } from "./styles";
-import { IDeleteNaverModalProps } from "@interfaces/DeleteNaverModalProps.interface";
+import { IDeleteNaverModalProps } from "@interfaces/IDeleteNaverModalProps.interface";
 
 const DeleteNaverModal = ({isOpen, onClose, naver}: IDeleteNaverModalProps) => {
   const closeModal = () => {

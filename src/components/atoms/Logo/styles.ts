@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IThemeLogoProps } from "@interfaces/ThemedLogoProps.interfce";
+import { IThemeLogoProps } from "@interfaces/IThemedLogoProps.interfce";
 
 export const Container = styled.h1`
   font-size: ${({small }: IThemeLogoProps) => small ? 36 : 60}px;

@@ -1,40 +1,68 @@
-/* eslint-disable max-len */
-import React, { useState } from  "react";
+import React, { useState, useEffect, useCallback } from  "react";
 import NaversService from "@api/services/NaversService";
 import Eventbus from "@utils/Eventbus";
 import DialogModal from "@molecules/DialogModal";
 import { INewNaver } from "@interfaces/INewNaver.interface";
 import NewNaverForm from "@organisms/NewNaverForm";
-const NaverCreationForm = () => {
+import { INaver } from "@interfaces/INaver.interface";
+import { useHistory } from "react-router-dom";
+import { pathEnum } from "@constants/path";
+
+const NaverCreationForm = ({naver: _naver, id: _id}: {naver: INaver | undefined, id:string }) => {
+  const history = useHistory();
   const service = new NaversService();
-  const [naver, setNaver] = useState<INewNaver>({
-    "job_role": "Desenvolvedor",
-    "admission_date": "19/08/2018",
-    "birthdate": "12/04/1992",
-    "project":"Project Backend Test",
-    "name": "Christian Tavares ---",
-    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT-YF8M8YsAYndh2rWX3w8u1Lh4kJHgL86g6w&usqp=CAU"
-  });
+  const [id, setId] = useState("");
+  const [naver, setNaver] = useState<INewNaver>();
+
+  const fillState = useCallback((naver: INaver) => {
+    delete naver.user_id;
+    const { id = _id, ...rest} = naver;
+    setId(id);
+    setNaver(rest);
+  }, [_id]);
+
+  const loadById = useCallback(async (id: string) => {
+    try{
+      const naverById = await service.getById(id);
+      fillState(naverById);
+    } catch(e){
+      // eslint-disable-next-line no-console
+      console.log(e);
+    }
+  }, [fillState, service]);
+
+
+  const firtsVerificatoin = useCallback(async () =>{
+    if(_naver && !naver) return fillState(_naver);
+    if(_id) return loadById(id);
+    history.push(pathEnum.home);
+  }, [_id, _naver, fillState, history, id, loadById, naver]);
+  
+  useEffect( () => {
+    firtsVerificatoin();
+  }, [firtsVerificatoin]);
 
   const submit = async () => {
+    if(!naver) return;
     try {
-      await service.post(naver);
+      await service.update(id, naver);
       resetForm();
       Eventbus.$emit("openModal", () => (
         <DialogModal
-          title="Naver criado"
-          description="Naver criado com sucesso!"
+          title="Naver atualizado"
+          description="Naver atualizado com sucesso!"
         />
       ));
     } catch {
       Eventbus.$emit("openModal", () => (
         <DialogModal
           title="Houve algum erro..."
-          description={`Não foi possível criar ${name || "este naver"}. Por favor tente novamente.`}
-        />));
+          description={"Não foi possivel atualizar. Por favor tente novamente."}
+        />
+      ));
     }
   };
-
+  
   const resetForm = () => {
     setNaver({
       "job_role": "",
@@ -45,6 +73,10 @@ const NaverCreationForm = () => {
       "url": ""
     });
   };
+
+  if(!naver){
+    return null;
+  }
   
   return <NewNaverForm naver={naver} onSubmit={submit} onUpdate={setNaver} />;
 };

@@ -16,7 +16,7 @@ import TokenUtils from "@utils/TokenUtils";
 const LoginForm = () => {
   const service = new LoginService();
   const [error, setError] = useState<boolean>(false);
-  const [email, setEmail] = useState<string>("009@nave.rs");
+  const [email, setEmail] = useState<string>("123@nave.rs");
   const [password, setPassword] = useState<string>("nave1234");
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

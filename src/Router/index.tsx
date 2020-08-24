@@ -4,6 +4,7 @@ import { BrowserRouter, Switch } from "react-router-dom";
 import Dashboard from "@pages/Home";
 import Login from "@pages/Login";
 import NaverCreation from "@pages/NaverCreation";
+import NaverEdit from "@pages/NaverEdit";
 import RouteControl from "@src/Router/midleware/routeControl";
 import TokenUtils from "@utils/TokenUtils";
 import { pathEnum } from "@constants/path";
@@ -27,6 +28,12 @@ const Router = () => {
           hasAccess={auth} 
           redirectTo={pathEnum.login}
           component={NaverCreation} 
+        /> 
+        <RouteControl 
+          path={pathEnum.naver_edit_id} 
+          hasAccess={auth} 
+          redirectTo={pathEnum.login}
+          component={NaverEdit} 
         /> 
         <RouteControl 
           path={pathEnum.login} 

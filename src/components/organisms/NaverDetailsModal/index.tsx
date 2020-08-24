@@ -6,12 +6,13 @@ import {
   InfoContainer,
   FieldTitle,
   Title,
-  CloseIcon
+  CloseIcon,
+  IconsContainer
 } from "./styles";
 import { TextLevel2 } from "@atoms/Typograph";
 import { INaverDetailsModalProps } from "@interfaces/INaverDetailsModalProps.interface";
 
-const NaverDetailsModal = ({naver, isOpen, onClose}: INaverDetailsModalProps) => {
+const NaverDetailsModal = ({naver, isOpen, onClose, onEdit, onDelete}: INaverDetailsModalProps) => {
   const closeModal = () => {
     Eventbus.$emit("closeModal");
   };
@@ -36,10 +37,14 @@ const NaverDetailsModal = ({naver, isOpen, onClose}: INaverDetailsModalProps) =>
 
           <FieldTitle>Projetos que participou</FieldTitle>
           <TextLevel2>{naver.project}</TextLevel2>
+          <IconsContainer>
+            <span className="icon-delete" onClick={() => onDelete(naver)} />
+            <span className="icon-edit" onClick={() => onEdit(naver)} />
+          </IconsContainer>
         </InfoContainer>
       </Container>
     ));
-  }, [naver]);
+  }, [naver, onDelete, onEdit]);
   
   const shouldOpen = useCallback(() => {
     if(naver) open();

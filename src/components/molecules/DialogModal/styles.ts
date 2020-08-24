@@ -27,4 +27,5 @@ export const CloseIcon = styled.div`
   right: 24px;
   font-size: 23px;
   cursor: pointer;
+	color: ${({ theme }) => theme.icons.primary};
 `;

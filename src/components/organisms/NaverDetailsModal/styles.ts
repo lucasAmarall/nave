@@ -34,6 +34,7 @@ export const InfoContainer = styled.div`
   flex: 1;
   overflow: auto;
   padding: ${({theme}) => theme.padding(8)};
+  position: relative;
 `;
 
 export const CloseIcon = styled.div`
@@ -42,4 +43,18 @@ export const CloseIcon = styled.div`
   right: 24px;
   font-size: 23px;
   cursor: pointer;
+	color: ${({ theme }) => theme.icons.primary};
+`;
+
+export const IconsContainer = styled.div`
+  font-size: 24px;
+  position: absolute;
+  bottom: 24px;
+  left: 32px;
+	margin-top: ${({ theme }) => theme.margin(2)};
+	color: ${({ theme }) => theme.icons.primary};
+	span {
+		cursor: pointer;
+		margin-right: ${({ theme }) => theme.margin(2)}
+	}
 `;

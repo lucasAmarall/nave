@@ -10,6 +10,10 @@ export default class NaversService implements INavaerService{
     return (await APIService.get<INaver[]>("/navers")).data;
   }
 
+  async getById(id: string): Promise<INaver> {
+    return (await APIService.get<INaver[]>(`/navers/${id}`)).data[0];
+  }
+
   async delete(id: string): Promise<IDeleteNaverResponse> {
     return (await APIService.delete<IDeleteNaverResponse>(`/navers/${id}`)).data;
   }
@@ -17,4 +21,9 @@ export default class NaversService implements INavaerService{
   async post(naver: INewNaver): Promise<INewNaver>{
     return (await APIService.post<INewNaver>("/navers", naver)).data;
   }
+
+  async update(id: string, naver: INewNaver): Promise<INaver> {
+    return (await APIService.put<INaver>(`/navers/${id}`, naver)).data;
+  }
+
 }

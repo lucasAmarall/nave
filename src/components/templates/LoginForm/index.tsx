@@ -24,17 +24,22 @@ const LoginForm = () => {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if(loading) return;
+    if(!Validator.email(email) || !Validator.strMinLength(password, 4)) return;
     setLoading(true);
     try {
       const { token } = await service.login({email, password});
       TokenUtils.setToken(token);
     } catch {
-      setError(true);
-      setLoading(false);
-      setTimeout(() => {
-        setError(false);
-      }, 5000);
+      showError();
     } 
+  };
+
+  const showError = () => {
+    setError(true);
+    setLoading(false);
+    setTimeout(() => {
+      setError(false);
+    }, 5000);
   };
   return(
     <>

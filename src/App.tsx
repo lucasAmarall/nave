@@ -10,16 +10,18 @@ import ChangeThemeButton from "@atoms/ChangeThemeButton";
 import { Theme } from "@interfaces/ITheme.interface";
 
 const App = () => {
-  const [isLight, setIsLight] = useState(!localStorage.getItem("theme"));
+  const [isLight, setIsLight] = useState(!!localStorage.getItem("theme"));
   const [theme, setTheme] = useState<Theme>(themes[(isLight ? "light": "dark")]);
   const toggleTheme = () => {
     localStorage.setItem("theme", (theme.light ? "" : "1"));
     setTheme(theme.light ? themes.dark : themes.light);
+    setIsLight(!theme.light);
   };
 
   useEffect(() => {
-    setIsLight(theme.light);
+    setIsLight(!theme.light);
   }, [theme]);
+
 
   return (
     <>
@@ -29,7 +31,7 @@ const App = () => {
         <Router />
         <ScreenLocker />
         <Modal />
-        <ChangeThemeButton onChange={toggleTheme} checked={isLight}/>
+        <ChangeThemeButton onUpdate={toggleTheme} checked={isLight}/>
       </ThemeProvider>
     </>
   );

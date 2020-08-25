@@ -10,11 +10,13 @@ import {
 } from "./styles";
 import { HeadingLevel2 } from "@atoms/Typograph";
 import NaverCreationForm from "@templates/NaverCreationForm";
+import { useHistory } from "react-router-dom";
+import { pathEnum } from "@constants/path";
 
 const NaverCreation = () => {
-  
+  const history = useHistory();
   const goBack = () => {
-    window.history.back();
+    history.push(pathEnum.home);
   };
   return (
     <Container>

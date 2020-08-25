@@ -11,7 +11,6 @@ import DateUtil from "@utils/DateUtils";
 
 const NaverCreationForm = ({naver: _naver, id: _id}: {naver: INaver | undefined, id:string }) => {
   const history = useHistory();
-  const service = new NaversService();
   const [id, setId] = useState("");
   const [naver, setNaver] = useState<INewNaver>({
     "job_role": "Loading...",
@@ -35,19 +34,20 @@ const NaverCreationForm = ({naver: _naver, id: _id}: {naver: INaver | undefined,
 
   const loadById = useCallback(async (id: string) => {
     try{
+      const service = new NaversService();
       const naverById = await service.getById(id);
       if(naverById) fillState(naverById);
     } catch(e){
       history.push(pathEnum.home);
     }
-  }, [fillState, history, service]);
+  }, [fillState, history]);
 
 
   const firtsVerification = useCallback(async () =>{
-    if(_naver && !naver) return fillState(_naver);
+    if(_naver) return fillState(_naver);
     if(_id) return loadById(id);
     history.push(pathEnum.home);
-  }, [_id, _naver, fillState, history, id, loadById, naver]);
+  }, [_id, _naver, fillState, history, id, loadById]);
   
   useEffect( () => {
     firtsVerification();
@@ -56,6 +56,7 @@ const NaverCreationForm = ({naver: _naver, id: _id}: {naver: INaver | undefined,
   const submit = async () => {
     if(!naver) return;
     try {
+      const service = new NaversService();
       await service.update(id, naver);
       resetForm();
       Eventbus.$emit("openModal", () => (

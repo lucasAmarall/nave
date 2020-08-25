@@ -13,6 +13,7 @@ import {
 
 
 import TokenUtils from "@utils/TokenUtils";
+import Validator from "@utils/Validator";
 const LoginForm = () => {
   const service = new LoginService();
   const [loading, setLoading] = useState(false);
@@ -35,7 +36,6 @@ const LoginForm = () => {
       }, 5000);
     } 
   };
-
   return(
     <>
       <Container onSubmit={onSubmit}>
@@ -48,6 +48,7 @@ const LoginForm = () => {
             value={email} 
             onUpdate={setEmail} 
             type="email"
+            error={!!email && !Validator.email(email)}
             required
           />
         </InputContainer>
@@ -57,6 +58,7 @@ const LoginForm = () => {
             value={password} 
             onUpdate={setPassword} 
             type="password"
+            error={!!password && !Validator.strMinLength(password, 4)}
             required
           />
         </InputContainer>

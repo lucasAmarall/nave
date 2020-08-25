@@ -5,4 +5,6 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement>{
   onUpdate: (value: string) => void;
   props?: unknown;
   title?: string;
+  mask?: string;
+  error?: boolean;
 }

@@ -3,7 +3,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import NaversService from "@services/NaversService";
 import { INaver } from "@interfaces/INaver.interface";
 import NaverItem from "@molecules/NaverItem";
-import { Container, ItemContainer } from "./style";
+import { Container, ItemContainer, Loading } from "./style";
 import { INaversListProps } from "@interfaces/INaversListProps.interface";
 import Eventbus from "@utils/Eventbus";
 
@@ -23,6 +23,14 @@ const NaversList = ({onEdit, onDelete, onDetail}: INaversListProps) => {
     Eventbus.$on("reloadList", fetchList);
   }, [fetchList]);
   
+
+  if(!navers.length){
+    return(
+      <Container>
+        <Loading />
+      </Container>
+    );
+  }
   return(
     <Container>
       {

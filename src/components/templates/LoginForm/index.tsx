@@ -18,8 +18,8 @@ const LoginForm = () => {
   const service = new LoginService();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<boolean>(false);
-  const [email, setEmail] = useState<string>("123@nave.rs");
-  const [password, setPassword] = useState<string>("nave1234");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

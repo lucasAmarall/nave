@@ -54,7 +54,7 @@ Em sua source possui além da pasta de components outras pastas que possuem como
 ├── index.tsx
 ├── interfaces
 │   ├── IAPIServcice.interface.ts
-│   ├──******* Obecendo o COP (close, open principle) todos arquivos possuem sua interface que ficam aqui.
+│   ├──******* Obedecendo o COP (close, open principle) todos arquivos possuem sua interface que ficam aqui.
 ├── modules
 │   ├── ReactInputMask.d.ts
 │   ├── *******Declaração de modules pro typescript entender alguns imports como o que imagens.

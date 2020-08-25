@@ -29,12 +29,11 @@ const LoginForm = () => {
       TokenUtils.setToken(token);
     } catch {
       setError(true);
+      setLoading(false);
       setTimeout(() => {
         setError(false);
       }, 5000);
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
 
   return(

@@ -18,6 +18,12 @@ const NaverDetailsModal = ({naver, isOpen, onClose, onEdit, onDelete}: INaverDet
   };
   
   const open = useCallback(() => {
+    const _delete= () => {
+      closeModal();
+      setTimeout(() => {
+        if(naver) onDelete(naver);
+      }, 300);
+    };
     if(!naver) return;
     Eventbus.$emit("openModal", () => (
       <Container>
@@ -38,7 +44,7 @@ const NaverDetailsModal = ({naver, isOpen, onClose, onEdit, onDelete}: INaverDet
           <FieldTitle>Projetos que participou</FieldTitle>
           <TextLevel2>{naver.project}</TextLevel2>
           <IconsContainer>
-            <span className="icon-delete" onClick={() => (onDelete(naver))} />
+            <span className="icon-delete" onClick={_delete} />
             <span className="icon-edit" onClick={() => (closeModal(), onEdit(naver))} />
           </IconsContainer>
         </InfoContainer>

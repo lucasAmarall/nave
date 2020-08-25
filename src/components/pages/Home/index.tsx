@@ -22,6 +22,7 @@ const Dashboard = () => {
 
   const deleteNaver = (naver: INaver) => {
     setNaverSelected(naver);
+    setNaverDetailsStatus(false);
     setDeleteNaverModalStatus(true);
   };
 
@@ -58,7 +59,7 @@ const Dashboard = () => {
         />
         <NaverDetailsModal 
           onDelete={deleteNaver}
-          onEdit={(editNaver)}
+          onEdit={editNaver}
           naver={naverSelected} 
           isOpen={openNaverDetails} 
           onClose={() => setNaverDetailsStatus(false)}

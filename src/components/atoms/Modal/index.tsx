@@ -30,6 +30,7 @@ const ScreenLocker = () => {
     }, 300);
   };
 
+  // transformation to haver lifecycle
   const ComponentToShow = () => component;
   return (
     <Container active={isOpen}>

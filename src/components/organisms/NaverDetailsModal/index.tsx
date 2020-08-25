@@ -11,13 +11,19 @@ import {
 } from "./styles";
 import { TextLevel2 } from "@atoms/Typograph";
 import { INaverDetailsModalProps } from "@interfaces/INaverDetailsModalProps.interface";
-
+import DateUtils from "@utils/DateUtils";
 const NaverDetailsModal = ({naver, isOpen, onClose, onEdit, onDelete}: INaverDetailsModalProps) => {
   const closeModal = () => {
     Eventbus.$emit("closeModal");
   };
   
   const open = useCallback(() => {
+    const _delete= () => {
+      closeModal();
+      setTimeout(() => {
+        if(naver) onDelete(naver);
+      }, 300);
+    };
     if(!naver) return;
     Eventbus.$emit("openModal", () => (
       <Container>
@@ -30,15 +36,15 @@ const NaverDetailsModal = ({naver, isOpen, onClose, onEdit, onDelete}: INaverDet
           <TextLevel2>{naver.job_role}</TextLevel2>
 
           <FieldTitle>Idade</FieldTitle>
-          <TextLevel2>{naver.birthdate}</TextLevel2>
+          <TextLevel2>{DateUtils.getFormatedDate(naver.birthdate)}</TextLevel2>
 
           <FieldTitle>Tempo de empresa</FieldTitle>
-          <TextLevel2>{naver.admission_date}</TextLevel2>
+          <TextLevel2>{DateUtils.getFormatedDate(naver.admission_date)}</TextLevel2>
 
           <FieldTitle>Projetos que participou</FieldTitle>
           <TextLevel2>{naver.project}</TextLevel2>
           <IconsContainer>
-            <span className="icon-delete" onClick={() => (onDelete(naver))} />
+            <span className="icon-delete" onClick={_delete} />
             <span className="icon-edit" onClick={() => (closeModal(), onEdit(naver))} />
           </IconsContainer>
         </InfoContainer>

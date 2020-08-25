@@ -17,6 +17,7 @@ export const light = {
   },
   borders: {
     primary: "#000000",
+    error: "red"
   },
   icons: {
     primary: "#000000"
@@ -41,6 +42,7 @@ export const dark: Theme = {
   },
   borders: {
     primary: "#ffffff",
+    error: "red"
   },
   icons: {
     primary: "#ffffff"

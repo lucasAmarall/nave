@@ -10,16 +10,18 @@ import {
 } from "./styles";
 import { HeadingLevel2 } from "@atoms/Typograph";
 import NaverEditFrom from "@templates/NaverEditForm";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useHistory } from "react-router-dom";
 import { INaver } from "@interfaces/INaver.interface";
+import { pathEnum } from "@constants/path";
 
 const NaverEdit = () => {
+  const history = useHistory();
   const params = useParams<{id: string}>();
   const { state } = useLocation<INaver>();
   const id = params.id;
   
   const goBack = () => {
-    window.history.back();
+    history.push(pathEnum.home);
   };
   return (
     <Container>

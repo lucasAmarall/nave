@@ -13,6 +13,7 @@ import {
 
 
 import TokenUtils from "@utils/TokenUtils";
+import Validator from "@utils/Validator";
 const LoginForm = () => {
   const service = new LoginService();
   const [loading, setLoading] = useState(false);
@@ -23,20 +24,23 @@ const LoginForm = () => {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if(loading) return;
+    if(!Validator.email(email) || !Validator.strMinLength(password, 4)) return;
     setLoading(true);
     try {
       const { token } = await service.login({email, password});
       TokenUtils.setToken(token);
     } catch {
-      setError(true);
-      setTimeout(() => {
-        setError(false);
-      }, 5000);
-    } finally {
-      setLoading(false);
-    }
+      showError();
+    } 
   };
 
+  const showError = () => {
+    setError(true);
+    setLoading(false);
+    setTimeout(() => {
+      setError(false);
+    }, 5000);
+  };
   return(
     <>
       <Container onSubmit={onSubmit}>
@@ -49,6 +53,7 @@ const LoginForm = () => {
             value={email} 
             onUpdate={setEmail} 
             type="email"
+            error={!!email && !Validator.email(email)}
             required
           />
         </InputContainer>
@@ -58,6 +63,7 @@ const LoginForm = () => {
             value={password} 
             onUpdate={setPassword} 
             type="password"
+            error={!!password && !Validator.strMinLength(password, 4)}
             required
           />
         </InputContainer>

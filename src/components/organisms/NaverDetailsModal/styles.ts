@@ -17,6 +17,8 @@ export const Container = styled.div`
 export const Picture = styled.img`
   flex: 1;
   max-width: 50%;
+  object-position: center;
+  object-fit: cover;  
 `;
 
 export const Title = styled(HeadingLevel2)`
@@ -45,6 +47,7 @@ export const CloseIcon = styled.div`
   right: 24px;
   font-size: 23px;
   cursor: pointer;
+  z-index: 99;
 	color: ${({ theme }) => theme.icons.primary};
 `;
 

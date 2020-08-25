@@ -18,6 +18,7 @@ const DeleteNaverModal = ({isOpen, onClose, naver}: IDeleteNaverModalProps) => {
       setLoading(true);
       const service = new NaversService();
       await service.delete(id);
+      Eventbus.$emit("reloadList");
       Eventbus.$emit("openModal", () => (
         <DialogModal
           title="Naver excluído"

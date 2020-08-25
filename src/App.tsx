@@ -1,35 +1,36 @@
 import React, { useState, useEffect } from "react";
 import Router from "@src/Router";
-import BaseCss from "@atoms/BaseCss";
-import Icons from "@atoms/Icons";
 import { ThemeProvider } from "styled-components";
 import { themes } from "@constants/theme";
 import ScreenLocker from "@atoms/ScreenLocker";
 import Modal from "@atoms/Modal";
 import ChangeThemeButton from "@atoms/ChangeThemeButton";
 import { Theme } from "@interfaces/ITheme.interface";
-
+import ThemeStyle from "@atoms/Theme";
+import "@src/css/ResetCss/index.css";
+import "@src/css/Icons/index.css";
 const App = () => {
-  const [isLight, setIsLight] = useState(!localStorage.getItem("theme"));
+  const [isLight, setIsLight] = useState(!!localStorage.getItem("theme"));
   const [theme, setTheme] = useState<Theme>(themes[(isLight ? "light": "dark")]);
   const toggleTheme = () => {
     localStorage.setItem("theme", (theme.light ? "" : "1"));
     setTheme(theme.light ? themes.dark : themes.light);
+    setIsLight(!theme.light);
   };
 
   useEffect(() => {
-    setIsLight(theme.light);
+    setIsLight(!theme.light);
   }, [theme]);
+
 
   return (
     <>
       <ThemeProvider theme={theme}>
-        <BaseCss />
-        <Icons />
+        <ThemeStyle />
         <Router />
         <ScreenLocker />
         <Modal />
-        <ChangeThemeButton onChange={toggleTheme} checked={isLight}/>
+        <ChangeThemeButton onUpdate={toggleTheme} checked={isLight}/>
       </ThemeProvider>
     </>
   );

@@ -5,7 +5,6 @@ export const ConfirmButtonsContainer = styled.div`
   max-width: 376px;
   height: 40px;
   display: flex;
-  flex-wrapa: wrap;
   justify-content: space-between;
   align-self: flex-end;
   float: right;
